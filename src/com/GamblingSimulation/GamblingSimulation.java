@@ -65,6 +65,8 @@ public class GamblingSimulation {
 			j++;
 	
 		}
+		
+		
 		System.out.println("Each Month Win and Lost Ratios");
 		System.out.println(Arrays.toString(eachMonthWinRatio));
 		System.out.println(Arrays.toString(eachMonthLostRatio));
