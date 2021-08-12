@@ -12,6 +12,24 @@ public class gamblingSimulation {
 			return false;
 	}
 	
+	public static void gambling(int cnt, int win, int lose) {
+		while(true) {
+			if(gamble())
+				cnt+=1;
+			else
+				cnt-=1;
+				
+			if(cnt == win) {
+				System.out.println("Congrats you've won the and the stake amount is "+win +"$");
+				break;
+			}
+			else if(cnt == lose){
+				System.out.println("Sorry, you've lost the bets and the stake amount is "+ (stake+lose) +"$");
+				break;
+			}
+		}
+	}
+	
 	public static void main(String[] args) {
 		double formula = ((double)50/stake) * 100;
 		int win = stake + (int)formula;
@@ -25,21 +43,7 @@ public class gamblingSimulation {
 			System.out.println("Sorry, you've lost the bet "+bet +"$");
 		
 		//Use Case - 3 
-		while(true) {
-			if(gamble())
-				cnt+=1;
-			else
-				cnt-=1;
-				
-			if(cnt == win) {
-				System.out.println("Congrats you've won the and the stake amount is "+win +"$");
-				break;
-			}
-			else if(cnt == lose){
-				System.out.println("Sorry, you've lost the bets and the stake amount is "+ (stake-lose) +"$");
-				break;
-			}
-		}
+		gambling(cnt,win,lose);
 		
 	}
 
