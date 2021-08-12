@@ -1,6 +1,6 @@
 package com.gamblingsimulation;
 
-public class gamblingSimulation {
+public class GamblingSimulation {
 	//Use Case - 1
 	public static final int stake = 100;
 	public static final int bet = 1;
