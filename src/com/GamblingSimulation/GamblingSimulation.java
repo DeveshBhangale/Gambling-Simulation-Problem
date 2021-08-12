@@ -1,9 +1,10 @@
 package com.gamblingsimulation;
+import java.util.*;
 
 public class GamblingSimulation {
 	//Use Case - 1
-	public static final int stake = 100;
-	public static final int bet = 1;
+	public static final int stake = 100,bet = 1,days=20;
+	
 	
 	public static boolean gamble() {
 		if(Math.random()<0.5) 	
@@ -12,7 +13,8 @@ public class GamblingSimulation {
 			return false;
 	}
 	
-	public static void gambling(int cnt, int win, int lose) {
+	public static boolean gambling(int cnt, int win, int lose) {
+		int flag = 0;
 		while(true) {
 			if(gamble())
 				cnt+=1;
@@ -20,12 +22,12 @@ public class GamblingSimulation {
 				cnt-=1;
 				
 			if(cnt == win) {
-				System.out.println("Congrats you've won the and the stake amount is "+win +"$");
-				break;
+				flag = 1;
+				return true;
 			}
 			else if(cnt == lose){
-				System.out.println("Sorry, you've lost the bets and the stake amount is "+ (stake+lose) +"$");
-				break;
+				flag = 0;
+				return false;
 			}
 		}
 	}
@@ -35,15 +37,22 @@ public class GamblingSimulation {
 		int win = stake + (int)formula;
 		int lose = -(int)formula;
 		int cnt = 0;
-	
+		String[] arr = new String[days];
 		//Use Case - 2
+		System.out.println("Use Case 2");
 		if(gamble())
-			System.out.println("Congrats you've won the bet "+bet +"$");
+			System.out.println("Congrats you've won the bet "+bet +"$\n");
 		else
-			System.out.println("Sorry, you've lost the bet "+bet +"$");
+			System.out.println("Sorry, you've lost the bet "+bet +"$\n");
 		
-		//Use Case - 3 
-		gambling(cnt,win,lose);
+		//Use Case - 3 & 4
+		for(int i=0; i<days;i++) {
+			if(gambling(cnt,win,lose))
+				arr[i] = "Won";
+			else
+				arr[i] = "Lost";
+		}
+		System.out.println(Arrays.toString(arr));
 		
 	}
 
