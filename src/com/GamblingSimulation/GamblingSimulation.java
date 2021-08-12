@@ -15,7 +15,6 @@ public class GamblingSimulation {
 	
 	public static int getMonth(int[] arr) {
 		int max = Arrays.stream(arr).max().getAsInt(),a = 0;
-		System.out.println(max);
 		for(int i=0; i<arr.length;i++) {
 			if(arr[i] == max) {
 				a = i+1;
@@ -60,8 +59,8 @@ public class GamblingSimulation {
 			System.out.println("Sorry, you've lost the bet "+bet +"$\n");
 		
 		//Use Case - 3 & 4 & 5
-		while(j<months) {
-			int w=0,l=0;
+		while(true) {
+			public int w=0,l=0;
 			for(int i=0; i<days;i++) {			
 				if(gambling(cnt,win,lose)) {
 					arr[i] = "Won";
@@ -70,19 +69,32 @@ public class GamblingSimulation {
 				else {
 					arr[i] = "Lost";
 					l+=1;
-					}				
+					}
+				
 			}
 			eachMonthWinRatio[j] = w;
 			eachMonthLostRatio[j] = l;
 			j++;
-	
+			
+			// Use-Case 7
+			if(j>=months) {
+				if(w>l) {
+					System.out.println("Congrats you've won last month do you want to continue next Month \nEnter Y/N");
+					String s = sc.next();
+					if(s=="N")
+						break;
+				}
+				else
+					break;
+			}		
 		}
+		System.out.println("Use Case 5");
 		System.out.println("Each Month Win and Lost Ratios");
 		System.out.println(Arrays.toString(eachMonthWinRatio));
 		System.out.println(Arrays.toString(eachMonthLostRatio));
 		
 		//Use Case 6
-		
+		System.out.println("\nUse Case 6");
 		System.out.println("Luckiest month where the player Won maximum " + getMonth(eachMonthWinRatio) );
 		System.out.println("Unluckiest month where the player Lost maximum " + getMonth(eachMonthLostRatio));
 		}
