@@ -13,6 +13,18 @@ public class GamblingSimulation {
 			return false;
 	}
 	
+	public static int getMonth(int[] arr) {
+		int max = Arrays.stream(arr).max().getAsInt(),a = 0;
+		System.out.println(max);
+		for(int i=0; i<arr.length;i++) {
+			if(arr[i] == max) {
+				a = i+1;
+				break;}
+				
+		}
+		return a;
+	}
+	
 	public static boolean gambling(int cnt, int win, int lose) {
 		int flag = 0;
 		while(true) {
@@ -68,6 +80,11 @@ public class GamblingSimulation {
 		System.out.println("Each Month Win and Lost Ratios");
 		System.out.println(Arrays.toString(eachMonthWinRatio));
 		System.out.println(Arrays.toString(eachMonthLostRatio));
-	}
+		
+		//Use Case 6
+		
+		System.out.println("Luckiest month where the player Won maximum " + getMonth(eachMonthWinRatio) );
+		System.out.println("Unluckiest month where the player Lost maximum " + getMonth(eachMonthLostRatio));
+		}
 
 }
