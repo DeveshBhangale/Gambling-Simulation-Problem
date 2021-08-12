@@ -60,7 +60,7 @@ public class GamblingSimulation {
 		
 		//Use Case - 3 & 4 & 5
 		while(true) {
-			public int w=0,l=0;
+			int w=0,l=0;
 			for(int i=0; i<days;i++) {			
 				if(gambling(cnt,win,lose)) {
 					arr[i] = "Won";
@@ -80,7 +80,9 @@ public class GamblingSimulation {
 			if(j>=months) {
 				if(w>l) {
 					System.out.println("Congrats you've won last month do you want to continue next Month \nEnter Y/N");
+					Scanner sc = new Scanner(System.in);
 					String s = sc.next();
+					sc.close();
 					if(s=="N")
 						break;
 				}
